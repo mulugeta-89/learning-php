@@ -18,6 +18,10 @@
         <input type="text" name="email"/>
         <br>
         <br>
+        Optional_Email<br>
+        <input type="text" name="optional"/>
+        <br>
+        <br>
         <input type="submit" name="submit" value="submit"/>
     </form>
 </body>
@@ -29,6 +33,13 @@
         $age = filter_input(INPUT_POST, "age", FILTER_SANITIZE_NUMBER_INT);
         echo "u are {$age} years old <br>";
         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
-        echo "ur email is {$email}";
+        echo "ur email is {$email} <br>";
+        $optional = filter_input(INPUT_POST, "optional", FILTER_VALIDATE_EMAIL);
+
+        if(empty($optional)){
+            echo "U did not typed  a correct email";
+        } else{
+            echo "your optional email is {$optional}";
+        }
     }
 ?>
